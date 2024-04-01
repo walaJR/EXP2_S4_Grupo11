@@ -1,0 +1,119 @@
+package exp2_s4_grupo11;
+
+import java.util.Scanner;
+
+public class EXP2_S4_Grupo11 {
+
+    static Scanner entrada = new Scanner(System.in);
+    
+    public static void main(String[] args) {
+        
+    int respUsuario1 = 0;
+    int zonaEntrada;
+    String tipoEntrada = null;
+    double valorEntrada = 0;
+    double total = 0;
+    int contador = 0;
+    double dsctoEst = .10;
+    double dsctoTercera = .15;
+    String estudiante = "Estudiante";
+    String terceraEdad = "Tercera Edad";
+    String publicoNormal = "Público Normal";
+    double descuentoTotal = 0;
+    
+    System.out.println("Bienvenido a Teatros F.S.A. Maipú.");
+    System.out.println("Por favor digite 1 para COMPRAR, o 2 para SALIR.");
+    respUsuario1 = entrada.nextInt();
+    
+    if(respUsuario1 == 1) {
+        
+        do {
+            
+            System.out.println("------------- Sistema de Venta de Entradas Teatro F.S.A. Maipú -------------");
+            System.out.println("Por favor digite el número correspondiente al sector que usted desea.");
+            System.out.println("1.- Para Zona A");
+            System.out.println("2.- Para Zona B");
+            System.out.println("3.- Para Zona C");
+            System.out.println("4.- Para SALIR del carrito de compras y PROCEDER a pagar.");
+            zonaEntrada = entrada.nextInt();
+            
+                switch (zonaEntrada) {
+                    case 1: tipoEntrada = "Zona A";
+                            valorEntrada = 45000;
+                            contador = contador+1;
+                            total = valorEntrada * contador;
+                            System.out.println("Tipo de entrada " + tipoEntrada + ", y su valor es de: "+valorEntrada);
+                            System.out.println("El total de su carrito hasta el momento es de: "+total);
+                            break;
+                    case 2: tipoEntrada = "Zona B";
+                            valorEntrada = 37000;
+                            contador = contador+1;
+                            total = valorEntrada * contador;
+                            System.out.println("Tipo de entrada " + tipoEntrada + ", y su valor es de: "+valorEntrada);
+                            System.out.println("El total de su carrito hasta el momento es de: "+total);
+                            break;
+                    case 3: tipoEntrada = "Zona C";
+                            valorEntrada = 30000;
+                            contador = contador+1;
+                            total = valorEntrada * contador;
+                            System.out.println("Tipo de entrada " + tipoEntrada + ", y su valor es de: "+valorEntrada);
+                            System.out.println("El total de su carrito hasta el momento es de: "+total);
+                            break;
+                    case 4: 
+                        break;
+                    default: System.out.println("Por favor ingrese una opción seleccionada. Ejemplo: 1");
+                    }
+        }
+        
+                while (zonaEntrada != 4); //variable de salida
+        
+                System.out.println("Menores de 18 años tienen un 10% de descuento Estudiante en el total de la compra.");
+                System.out.println("Los mayores de 70 años tienen un 15% de descuento Adulto Mayor en el total de la compra.");
+                System.out.println("Por favor, ingrese su edad.");
+                int edad = entrada.nextInt();
+                
+                if(edad <= 18 && contador == 1) {
+                    System.out.println("Su tipo de entrada: " +tipoEntrada);
+                    System.out.println("Categoría: "+estudiante);
+                    descuentoTotal = total*dsctoEst;
+                    System.out.println("Descuento Estudiante -$ "+descuentoTotal+ " canjeado con éxito.");
+                    System.out.println("Total a pagar: $ "+(total-descuentoTotal));
+                    System.out.println("Gracias por su visita. Disfrute la función.");
+                } else if(edad <= 18 && contador >= 2) {
+                    System.out.println("Su tipo de entrada: Múltiples entradas.");
+                    System.out.println("Categoría: "+estudiante);
+                    descuentoTotal = total*dsctoEst;
+                    System.out.println("Descuento Estudiante -$ "+descuentoTotal+ " canjeado con éxito.");
+                    System.out.println("Total a pagar: $ "+(total-descuentoTotal));
+                    System.out.println("Gracias por su visita. Disfrute la función.");
+                } else if(edad >= 70 && contador == 1) {
+                    System.out.println("Su tipo de entrada: " +tipoEntrada);
+                    System.out.println("Categoría: "+terceraEdad);
+                    descuentoTotal = total*dsctoTercera;
+                    System.out.println("Descuento Tercera Edad -$ "+descuentoTotal+ " canjeado con éxito.");
+                    System.out.println("Total a pagar: $ "+(total-descuentoTotal));
+                    System.out.println("Gracias por su visita. Disfrute la función");
+                } else if(edad >= 70 && contador >= 2) {
+                    System.out.println("Su tipo de entrada: Múltiples entradas.");
+                    System.out.println("Categoría: "+terceraEdad);
+                    descuentoTotal = total*dsctoTercera;
+                    System.out.println("Descuento Tercera Edad -$ "+descuentoTotal+ " canjeado con éxito.");
+                    System.out.println("Total a pagar: $ "+(total-descuentoTotal));
+                    System.out.println("Gracias por su visita. Disfrute la función");
+                } else if(edad >= 18 && contador == 1) {
+                    System.out.println("Su tipo de entrada: " +tipoEntrada);
+                    System.out.println("Categoría: "+publicoNormal);
+                    System.out.println("Total a pagar: $ "+total);
+                    System.out.println("Gracias por su visita. Disfrute la función.");
+                } else if(edad >= 18 && contador >= 2) {
+                    System.out.println("Su tipo de entrada: Múltiples entradas.");
+                    System.out.println("Categoría: "+publicoNormal);
+                    System.out.println("Total a pagar: $ "+total);
+                    System.out.println("Gracias por su visita. Disfrute la función.");
+                }
+                            
+        } else {
+        System.out.println("Usted ha salido del programa.");
+    }
+        } 
+}
