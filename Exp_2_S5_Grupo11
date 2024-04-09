@@ -1,0 +1,163 @@
+package ejercicios5;
+
+import java.util.Scanner;
+
+public class EjercicioS5 {
+
+    // variables "globales" o static . Antepongo "comillas" ya que las variables globales de por sí, en Java no existen. Aunque en otros lenguajes sí existen.
+    static Scanner scanner = new Scanner(System.in); // las variables static vendrían cumpliendo la función de "variables globales" de otros lenguajes.
+    static String tipoUsuario = "";
+    static double dscEst = .10;
+    static double dscTercera = .15;
+    
+    
+    public static void main(String[] args) {
+        
+        //variables locales
+        String obraTeatro = "Princesa Violeta Full Speed";
+        int respUsuario = 0;
+        int edadUsuario;
+        int respSector = 0;
+        String tipoEntrada = "";
+        double valorEntrada = 0;
+        double dscTotal = 0;
+        double totalPagar = 0;
+                
+        System.out.println("--------------- Bienvenido a Teatros F.S.A. ---------------");
+        System.out.println("Este es el sistema de venta de entradas. Por favor, digite a continuación la opción que desea. ");
+        System.out.println("Digite 1. Para COMPRAR entradas a nuestra obra de teatro:  " + obraTeatro);
+        System.out.println("Digite 2. Para SABER ACERCA de nuestras Promociones y Descuentos.");
+        System.out.println("Digite 3. Para SALIR.");
+        respUsuario = scanner.nextInt();
+                
+                switch (respUsuario) {
+                    case 1: 
+                        System.out.println("Por favor seleccione el tipo de Entrada");
+                        System.out.println("Digite 1 para SECTOR VIP");
+                        System.out.println("Digite 2 para SECTOR PLATEA");
+                        System.out.println("Digite 3 para SECTOR GENERAL");
+                        respSector = scanner.nextInt();
+                            if (respSector == 1) {
+                                tipoEntrada = "SECTOR VIP";
+                                valorEntrada = 50000;
+                                System.out.println("Para verificar descuentos asociados a Estudiantes y Tercera Edad, por favor digite su edad. Ejemplo: 40");
+                                edadUsuario = scanner.nextInt();
+                                    if (edadUsuario <= 18) {
+                                        dscTotal = valorEntrada * dscEst;
+                                        totalPagar = valorEntrada - dscTotal;
+                                        tipoUsuario = "Menor de Edad Estudiante";
+                                        System.out.println("Tienes un descuento especial por ser menor de Edad y Estudiante.");
+                                        System.out.println("El descuento es de: $ " + dscTotal);
+                                        System.out.println("Y tu tipo de entrada es: "+tipoEntrada+" "+tipoUsuario);
+                                        System.out.println("Tu total a pagar para la obra de teatro "+obraTeatro+" es de: $ "+totalPagar);
+                                        System.out.println("¡Gracias por venir! Por favor disfruta la función.");
+                                                
+                                    }   else if (edadUsuario >= 70) {
+                                                dscTotal = valorEntrada * dscTercera;
+                                                totalPagar = valorEntrada - dscTotal;
+                                                tipoUsuario = "Tercera Edad - Adulto Mayor";
+                                                System.out.println("Tienes un descuento especial de Tercera Edad por ser mayor a 70 años.");
+                                                System.out.println("El descuento es de: $ " + dscTotal);
+                                                System.out.println("Y tu tipo de entrada es: "+tipoEntrada+" "+tipoUsuario);
+                                                System.out.println("Tu total a pagar para la obra de teatro "+obraTeatro+" es de: $ "+totalPagar);
+                                                System.out.println("¡Gracias por venir! Por favor disfruta la función.");
+                                                
+                                      } else if (edadUsuario >= 18) {
+                                                totalPagar = valorEntrada;
+                                                tipoUsuario = "Usuario general";
+                                                System.out.println("Y tu tipo de entrada es: "+tipoEntrada+" "+tipoUsuario);
+                                                System.out.println("Tu total a pagar para la obra de teatro "+obraTeatro+" es de: $ "+totalPagar);
+                                                System.out.println("¡Gracias por venir! Por favor disfruta la función.");
+                                                }
+                                    
+                             }
+                             if (respSector == 2) {
+                                tipoEntrada = "SECTOR PLATEA";
+                                valorEntrada = 35000;
+                                System.out.println("Para verificar descuentos asociados a Estudiantes y Tercera Edad, por favor digite su edad. Ejemplo: 40");
+                                edadUsuario = scanner.nextInt();
+                                    if (edadUsuario <= 18) {
+                                        dscTotal = valorEntrada * dscEst;
+                                        totalPagar = valorEntrada - dscTotal;
+                                        tipoUsuario = "Menor de Edad Estudiante";
+                                        System.out.println("Tienes un descuento especial por ser menor de Edad y Estudiante.");
+                                        System.out.println("El descuento es de: $ " + dscTotal);
+                                        System.out.println("Y tu tipo de entrada es: "+tipoEntrada+" "+tipoUsuario);
+                                        System.out.println("Tu total a pagar para la obra de teatro "+obraTeatro+" es de: $ "+totalPagar);
+                                        System.out.println("¡Gracias por venir! Por favor disfruta la función.");
+                                                
+                                    }   else if (edadUsuario >= 70) {
+                                                dscTotal = valorEntrada * dscTercera;
+                                                totalPagar = valorEntrada - dscTotal;
+                                                tipoUsuario = "Tercera Edad - Adulto Mayor";
+                                                System.out.println("Tienes un descuento especial de Tercera Edad por ser mayor a 70 años.");
+                                                System.out.println("El descuento es de: $ " + dscTotal);
+                                                System.out.println("Y tu tipo de entrada es: "+tipoEntrada+" "+tipoUsuario);
+                                                System.out.println("Tu total a pagar para la obra de teatro "+obraTeatro+" es de: $ "+totalPagar);
+                                                System.out.println("¡Gracias por venir! Por favor disfruta la función.");
+                                                
+                                      } else if (edadUsuario >= 18) {
+                                                totalPagar = valorEntrada;
+                                                tipoUsuario = "Usuario general";
+                                                System.out.println("Y tu tipo de entrada es: "+tipoEntrada+" "+tipoUsuario);
+                                                System.out.println("Tu total a pagar para la obra de teatro "+obraTeatro+" es de: $ "+totalPagar);
+                                                System.out.println("¡Gracias por venir! Por favor disfruta la función.");
+                                                }
+                                    
+                             }
+                             if (respSector == 3) {
+                                tipoEntrada = "SECTOR GENERAL";
+                                valorEntrada = 25000;
+                                System.out.println("Para verificar descuentos asociados a Estudiantes y Tercera Edad, por favor digite su edad. Ejemplo: 40");
+                                edadUsuario = scanner.nextInt();
+                                    if (edadUsuario <= 18) {
+                                        dscTotal = valorEntrada * dscEst;
+                                        totalPagar = valorEntrada - dscTotal;
+                                        tipoUsuario = "Menor de Edad Estudiante";
+                                        System.out.println("Tienes un descuento especial por ser menor de Edad y Estudiante.");
+                                        System.out.println("El descuento es de: $ " + dscTotal);
+                                        System.out.println("Y tu tipo de entrada es: "+tipoEntrada+" "+tipoUsuario);
+                                        System.out.println("Tu total a pagar para la obra de teatro "+obraTeatro+" es de: $ "+totalPagar);
+                                        System.out.println("¡Gracias por venir! Por favor disfruta la función.");
+                                                
+                                    }   else if (edadUsuario >= 70) {
+                                                dscTotal = valorEntrada * dscTercera;
+                                                totalPagar = valorEntrada - dscTotal;
+                                                tipoUsuario = "Tercera Edad - Adulto Mayor";
+                                                System.out.println("Tienes un descuento especial de Tercera Edad por ser mayor a 70 años.");
+                                                System.out.println("El descuento es de: $ " + dscTotal);
+                                                System.out.println("Y tu tipo de entrada es: "+tipoEntrada+" "+tipoUsuario);
+                                                System.out.println("Tu total a pagar para la obra de teatro "+obraTeatro+" es de: $ "+totalPagar);
+                                                System.out.println("¡Gracias por venir! Por favor disfruta la función.");
+                                                
+                                      } else if (edadUsuario >= 18) {
+                                                totalPagar = valorEntrada;
+                                                tipoUsuario = "Usuario general";
+                                                System.out.println("Y tu tipo de entrada es: "+tipoEntrada+" "+tipoUsuario);
+                                                System.out.println("Tu total a pagar para la obra de teatro "+obraTeatro+" es de: $ "+totalPagar);
+                                                System.out.println("¡Gracias por venir! Por favor disfruta la función.");
+                                                }
+                                    
+                             }
+                             break;
+                    case 2: 
+                        System.out.println("Acerca de nuestras promociones y descuentos:");
+                        System.out.println("- Menores de edad pagan tarifa Menor de Edad - Estudiante. (Descuento: 10% en el total a pagar).");
+                        System.out.println("- Mayores de 70 años, pagan tarifa especial Tercera Edad - Adulto Mayor. (Descuento: 15% en el total a pagar).");
+                        System.out.println("- Descuento del 25% pagando con Banco de Chile (Descuento no disponible de momento)(Excluye Tarifa Estudiante y Tercera Edad).");
+                        break;
+                    
+                    case 3: 
+                        System.out.println("---- SALIR ---- Gracias por su visita.");
+                        break;
+                    default: System.out.println("Por favor digite un número válido");
+                
+                
+                
+                
+                
+                }
+        scanner.close();
+    }
+    
+}
