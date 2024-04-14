@@ -1,0 +1,158 @@
+package sumativa_dos;
+
+import java.util.Scanner;
+
+public class Sumativa_dos {
+
+    static Scanner teclado = new Scanner(System.in);
+    static String obraTeatro = "Princesa Violeta 2 El Regreso Full Speed";
+    static int contador1 = 0;
+    static int contador2 = 0;
+    static int precioEntrada = 0;
+    static int contadorGeneral = 0;
+    static double dscEst = .10;
+    static double dscTercera = .15;
+    static double dscTres = .25;
+    
+    
+    public static void main(String[] args) {
+        
+        int opcionUno = 0;
+        int opcionDos;
+        String sectorEntradaUno = "";
+        String sectorEntradaDos = "";
+        int opcionTres = 0;
+        boolean bool1 = false;
+        boolean bool2 = false;
+        double totalPagar1 = 0;
+        double totalPagar2 = 0;
+        double total = 0;
+        String totalFinal = "";
+        int edadUsuario = 0;
+        String tipoUsuario = "";
+        double dscTotal = 0;
+        double totalPagar = 0;
+        
+        
+            System.out.println("-------------------- Bienvenidos a Teatros Full Speed Ahead --------------------");
+            System.out.println("Por favor digita el número de la opción requerida");
+            System.out.println("1. Digite 1 para COMPRAR entradas para la Obra de Teatro: "+obraTeatro);
+            System.out.println("2. Digite 2 para CONOCER nuestros Descuentos y Promociones asociados");
+            System.out.println("3. Digite 3 para SALIR.");
+            opcionUno = teclado.nextInt();
+            
+            if (opcionUno == 1) {
+                opcionDos = 0;
+                while (opcionDos !=3) {
+                        System.out.println("------------------ Este es el Sistema de Ventas de Teatros F.S.A. ------------------");
+                        System.out.println("Por favor digita el número de la opción requerida");
+                        System.out.println("1.- Digite 1 para AÑADIR al Carrito Sector Océano");
+                        System.out.println("2.- Digite 2 para AÑADIR al Carrito Sector Cordillera");
+                        System.out.println("3.- Digite 3 para SALIR del Carrito y PROCEDER A PAGAR.");
+                        opcionDos = teclado.nextInt();
+                        
+                        switch (opcionDos) {
+                            case 1:
+                                sectorEntradaUno = "Océano";
+                                precioEntrada = 45000;
+                                contador1 = contador1 + 1;
+                                totalPagar1 = precioEntrada * contador1;
+                                bool1 = true;
+                                System.out.println("Usted está comprando entradas para el sector: "+sectorEntradaUno+". Para la Obra de Teatro: "+obraTeatro);
+                                break;
+                                
+                            case 2: 
+                                sectorEntradaDos = "Cordillera";
+                                precioEntrada = 30000;
+                                contador2 = contador2 + 1;
+                                totalPagar2 = precioEntrada * contador2;
+                                bool2 = true;
+                                System.out.println("Usted está comprando entradas para el sector: "+sectorEntradaUno+". Para la Obra de Teatro: "+obraTeatro);
+                                break;
+                                
+                            case 3: 
+                                contadorGeneral = contador1 + contador2;
+                                total = totalPagar1 + totalPagar2;
+                                System.out.println("---------------- Portal de Pagos ----------------");
+                                System.out.println("Para continuar, por favor ingrese su Edad. Ejemplo: 25");
+                                edadUsuario = teclado.nextInt();
+                                if (edadUsuario <= 18) {
+                                    System.out.println("--- Usted tiene un descuento especial por ser Estudiante/Menor de edad. Su descuento se verá reflejado en el total de tu compra. ---");
+                                    tipoUsuario = "Estudiante / Menor de edad";
+                                } else if (edadUsuario >= 70) {
+                                        System.out.println("--- Usted tiene un descuento especial de Adulto Mayor. Su descuento se verá reflejado en el total de tu compra. ---");
+                                        tipoUsuario = "Adulto Mayor";
+                                        } else if (edadUsuario >=18) {
+                                            tipoUsuario = "Público General";
+                                        }
+                                System.out.println("Usted ha añadido la cantidad de: "+contadorGeneral+" Entradas.");
+                                if (bool1 = true && contador2 <= 0) {
+                                    System.out.println("Para el sector Oceano: "+contador1+" Entradas.");
+                                }
+                                    else if (bool2 = true && contador1 <= 0) {
+                                        System.out.println("Para el sector Cordillera: "+contador2+" Entradas.");
+                                }
+                                        else if (bool1 = true && contador2 >= 1) {
+                                            System.out.println("Para el sector Oceano: "+contador1+" Entradas.");
+                                            System.out.println("Para el sector Cordillera: "+contador2+" Entradas.");
+                                }
+                                            else if (bool2 = true && contador1 >= 1) {
+                                                System.out.println("Para el sector Oceano: "+contador1+" Entradas.");
+                                                System.out.println("Para el sector Cordillera: "+contador2+" Entradas.");
+                                }
+                                System.out.println("Para la Obra de Teatro: "+obraTeatro); //aplicamos el descuento
+                                if (edadUsuario <= 18 && contadorGeneral !=3) {
+                                    dscTotal = total * dscEst;
+                                    totalPagar = total - dscTotal;
+                                    System.out.println("Su descuento por ser "+tipoUsuario+" Es de: $ "+dscTotal);
+                                    System.out.println("Y su total a pagar es de: $ "+totalPagar);
+                                    System.out.println("Muchas gracias por su compra, por favor disfrute de la función.");
+                                    totalFinal = "Pagado";
+                                        } else if (edadUsuario >= 70 && contadorGeneral !=3) {
+                                            dscTotal = total * dscTercera;
+                                            totalPagar = total - dscTotal;
+                                            System.out.println("Su descuento por ser "+tipoUsuario+" Es de: $ "+dscTotal);
+                                            System.out.println("Y su total a pagar es de : $ "+totalPagar);
+                                            System.out.println("Muchas gracias por su compra, por favor disfrute de la función.");
+                                            totalFinal = "Pagado";
+                                                } else if (edadUsuario >= 18 && contadorGeneral !=3) {
+                                                    System.out.println("El total a pagar es de: $ "+total);
+                                                    System.out.println("Muchas gracias por su compra, por favor disfrute de la función.");
+                                                    totalFinal = "Pagado";
+                                                        } else if (contadorGeneral == 3) {
+                                                            dscTotal = total * dscTres;
+                                                            totalPagar = total - dscTotal;
+                                                            totalFinal = "Pagado";
+                                                            tipoUsuario = "Promoción 3 entradas";
+                                                            System.out.println("Su descuento por "+tipoUsuario+" Es de: $ "+dscTotal);
+                                                            System.out.println("Y su total a pagar es de : $ "+totalPagar);
+                                                            System.out.println("Muchas gracias por su compra, por favor disfrute de la función.");
+                                                                    }
+                                break;
+                                default: System.out.println("Por favor digite una opción válida. Ejemplo: 2");
+                                return;
+                        }
+                    //
+                    if (totalFinal == "") {
+                    contadorGeneral = contador1 + contador2;
+                    double pago = totalPagar1 + totalPagar2;
+                    System.out.println("Usted ha añadido la cantidad de: "+contadorGeneral+" Entradas.");
+                    System.out.println("Hasta el momento, el total de tu carrito es de: $ "+pago+" (Descuentos y Promociones se aplicarán en el Portal de Pagos).");
+                    System.out.println("Si desea seguir comprando, siga añadiendo Tickets al Carrito de Compras.");
+                    System.out.println("Para finalizar y proceder a pagar, por favor digite 3");
+                    }
+                }
+            }
+            if (opcionUno == 2) {
+                System.out.println("----------------------- Descuentos y Promociones -----------------------");
+                System.out.println("- Estudiantes y menores de edad tienen un 10% de Descuento en el Total de tu compra. ");
+                System.out.println("- Mayores de 70 años tienen un Beneficio especial de Adulto Mayor. Poseen un Descuento del 15% en el Total de tu compra.");
+                System.out.println("- *PROMOCIÓN* Si compras 3 entradas, tendrás un 25% de Descuento en el Total de tu compra. Excluye Tarifa Estudiantes/Menores de edad y Excluye Tarifa Adulto Mayor.");
+            }
+            if (opcionUno >= 3) {
+                System.out.println("----- Usted ha salido. Gracias por su visita. -----");
+            }
+           
+    }
+    
+}
