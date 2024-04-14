@@ -67,7 +67,7 @@ public class Sumativa_dos {
                                 contador2 = contador2 + 1;
                                 totalPagar2 = precioEntrada * contador2;
                                 bool2 = true;
-                                System.out.println("Usted está comprando entradas para el sector: "+sectorEntradaUno+". Para la Obra de Teatro: "+obraTeatro);
+                                System.out.println("Usted está comprando entradas para el sector: "+sectorEntradaDos+". Para la Obra de Teatro: "+obraTeatro);
                                 break;
                                 
                             case 3: 
