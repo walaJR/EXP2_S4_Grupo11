@@ -152,7 +152,9 @@ public class Sumativa_dos {
             if (opcionUno >= 3) {
                 System.out.println("----- Usted ha salido. Gracias por su visita. -----");
             }
-           
+            
+      
+            teclado.close();
     }
     
 }
