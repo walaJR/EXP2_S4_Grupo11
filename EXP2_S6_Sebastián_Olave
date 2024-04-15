@@ -76,10 +76,10 @@ public class Sumativa_dos {
                                 System.out.println("---------------- Portal de Pagos ----------------");
                                 System.out.println("Para continuar, por favor ingrese su Edad. Ejemplo: 25");
                                 edadUsuario = teclado.nextInt();
-                                if (edadUsuario <= 18) {
+                                if (edadUsuario <= 18 && contadorGeneral !=3) {
                                     System.out.println("--- Usted tiene un descuento especial por ser Estudiante/Menor de edad. Su descuento se verá reflejado en el total de tu compra. ---");
                                     tipoUsuario = "Estudiante / Menor de edad";
-                                } else if (edadUsuario >= 70) {
+                                } else if (edadUsuario >= 70 && contadorGeneral !=3) {
                                         System.out.println("--- Usted tiene un descuento especial de Adulto Mayor. Su descuento se verá reflejado en el total de tu compra. ---");
                                         tipoUsuario = "Adulto Mayor";
                                         } else if (edadUsuario >=18) {
