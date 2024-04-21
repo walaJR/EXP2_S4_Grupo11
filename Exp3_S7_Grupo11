@@ -1,0 +1,302 @@
+package ejercicio.s5;
+
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class EjercicioS5 {
+
+    static double dscEst = .10;
+    static double dscTercera = .15;
+    static String tipoUsuario = "";
+    static double dscTotal = 0;
+    
+    public static void main(String[] args) {
+        
+    double valorEntrada = 0;
+    String nombreUsuario = "";
+    int opcionUsuario = 0;
+    String ubicacion = "";
+    String obraTeatro = "Princesa Violeta y el Veterinario Full Speed 3D";
+    int opcionDos = 0;
+    double totalPagado = 0;
+    String statusEntrada = "";
+    int codigoVerificacion = 0;
+    int edadUsuario = 0;
+    
+    HashMap<Integer, String> listaVentas = new HashMap<>();
+    List<Double> ventasTotales = new ArrayList<Double>();
+    Scanner teclado = new Scanner(System.in);
+    
+    opcionUsuario = 0;
+    
+    do {
+        System.out.println("---------------- Bienvenido al Sistema de Ventas 2.0 Teatros Full Speed Ahead ----------------");
+        System.out.println("Hoy en nuestra cartelera: "+obraTeatro);
+        System.out.println("Por favor digite una opción válida");
+        System.out.println("[1] Para COMPRAR entradas");
+        System.out.println("[2] Para ENTRAR al Resumen de ventas / ingresos totales");
+        System.out.println("[3] Para SALIR");
+        // QUEDA POR HACER: ELIMINAR ENTRADA, BUSCAR ENTRADA, CAMBIAR EL RESUMEN DE VENTAS A DICCIONARIO DONDE MUESTRE VALOR PAGADO Y UBICACIÓN DE ENTRADA.
+        opcionUsuario = teclado.nextInt();
+        
+            if (opcionUsuario == 1) {
+                System.out.println("--------------- Este es el Sistema de Ventas 2.0 Teatros F.S.A. ---------------");
+                System.out.println("Para continuar, por favor digite su Edad. Ejemplo: 30");
+                edadUsuario = teclado.nextInt();
+                System.out.println("Por favor seleccione su Ubicación. Digite una opción válida");
+                System.out.println("[1] Para comprar entrada Sector Cordillera");
+                System.out.println("[2] Para comprar entrada Sector Océano");
+                System.out.println("[3] Para comprar entrada Sector Arica");
+                opcionDos = teclado.nextInt();
+                teclado.nextLine();
+                
+                    switch (opcionDos) {
+                        case 1: 
+                                ubicacion = "Cordillera";
+                                if (edadUsuario <= 18) {
+                                    System.out.println("--- Usted tiene un 10% de Descuento por ser Estudiante/Menor de edad. Su descuento se verá reflejado en el total de tu compra. ---");
+                                    tipoUsuario = "Estudiante / Menor de edad";
+                                } else if (edadUsuario >= 70) {
+                                        System.out.println("--- Usted tiene un 15% de Descuento por ser Adulto Mayor. Su descuento se verá reflejado en el total de tu compra. ---");
+                                        tipoUsuario = "Adulto Mayor";
+                                        } else if (edadUsuario >=18) {
+                                            tipoUsuario = "Público General";
+                                        }
+                                
+                        System.out.println("Ha seleccionado comprar entrada para el Sector: "+ubicacion);
+                        System.out.println("Por favor ingrese su nombre:");
+                        nombreUsuario = teclado.nextLine();
+                    
+
+                    System.out.println("Por favor ingrese la cantidad de entradas que desea comprar:");
+                    int cantidadEntradas = teclado.nextInt();
+
+                    if (edadUsuario <= 18) {
+                        valorEntrada = 30000 * cantidadEntradas;
+                        dscTotal = valorEntrada * dscEst;
+                        totalPagado = valorEntrada - dscTotal;
+                        ventasTotales.add(totalPagado);// 2da lista
+                        System.out.println("Usted ha comprado " + cantidadEntradas + " entrada(s) para el sector: " + ubicacion);
+                        System.out.println("Su descuento especial de Estudiante/Menor de edad es de: -$ "+dscTotal);
+                        System.out.println("El valor total de la(s) entrada(s) es de: $ " + totalPagado+" "+tipoUsuario);
+                        statusEntrada = "Pagado";
+                        } else if (edadUsuario >= 70) {
+                            valorEntrada = 30000 * cantidadEntradas;
+                            dscTotal = valorEntrada * dscTercera;
+                            totalPagado = valorEntrada - dscTotal;
+                            ventasTotales.add(totalPagado);// 2da lista
+                            System.out.println("Usted ha comprado " + cantidadEntradas + " entrada(s) para el sector: " + ubicacion);
+                            System.out.println("Su descuento especial de Tercera Edad es de: -$ "+dscTotal);
+                            System.out.println("El valor total de la(s) entrada(s) es de: $ " + totalPagado+" "+tipoUsuario);
+                            statusEntrada = "Pagado";
+                            } else if (edadUsuario >= 18) {
+                                valorEntrada = 30000 * cantidadEntradas;
+                                totalPagado = valorEntrada;
+                                ventasTotales.add(totalPagado); // 2da lista
+                                System.out.println("Usted ha comprado " + cantidadEntradas + " entrada(s) para el sector: " + ubicacion);
+                                System.out.println("El valor total de la(s) entrada(s) es de: $ "+totalPagado);
+                                statusEntrada = "Pagado";
+                                }
+                                
+                    codigoVerificacion = 1000 + (int) (Math.random() * 9000);
+                    
+                    for (int i = 0; i < cantidadEntradas; i++) {
+                        listaVentas.put(codigoVerificacion, nombreUsuario);
+                    }
+                    
+                    
+                    if (statusEntrada != "") {
+    System.out.println(" ===================================== BOLETA =====================================");
+    System.out.println(" ");
+    System.out.println(" =                                 Teatros F.S.A.                                 =");
+    System.out.println(" ");
+    System.out.println(" ===================================== BOLETA =====================================");
+    System.out.println("=           - Ubicación de la entrada: " + ubicacion+"                                 =");
+    if (edadUsuario <= 18 || edadUsuario >= 70) {
+    System.out.println("=           - Descuento realizado: -$ "+dscTotal);
+    }
+    System.out.println("=           - Valor total de la compra: $ " +totalPagado+"                                  =");
+    System.out.println("=           - Tipo Usuario: "+tipoUsuario);
+    }
+    for (Integer key : listaVentas.keySet()) {
+            System.out.println("=   - Su Código de verificación: " + key + " - Nombre de reserva entrada: " + listaVentas.get(key));
+        }
+    System.out.println("Por favor guarde su Código de Verificación. En caso de anular su compra, se le pedirá el Código de Verificación para hacerla efectiva.");
+    System.out.println(" =================================================================================");
+    System.out.println("              ¡Gracias por Asistir. Por favor disfrute la función!");
+    System.out.println(" =================================================================================");
+                    break;
+                        
+                        case 2: 
+                            ubicacion = "Océano";
+                                if (edadUsuario <= 18) {
+                                    System.out.println("--- Usted tiene un 10% de Descuento por ser Estudiante/Menor de edad. Su descuento se verá reflejado en el total de tu compra. ---");
+                                    tipoUsuario = "Estudiante / Menor de edad";
+                                } else if (edadUsuario >= 70) {
+                                        System.out.println("--- Usted tiene un 15% de Descuento por ser Adulto Mayor. Su descuento se verá reflejado en el total de tu compra. ---");
+                                        tipoUsuario = "Adulto Mayor";
+                                        } else if (edadUsuario >=18) {
+                                            tipoUsuario = "Público General";
+                                        }
+                                
+                        System.out.println("Ha seleccionado comprar entrada para el Sector: "+ubicacion);
+                        System.out.println("Por favor ingrese su nombre:");
+                        nombreUsuario = teclado.nextLine();
+                    
+
+                    System.out.println("Por favor ingrese la cantidad de entradas que desea comprar:");
+                    cantidadEntradas = teclado.nextInt();
+
+                    if (edadUsuario <= 18) {
+                        valorEntrada = 37000 * cantidadEntradas;
+                        dscTotal = valorEntrada * dscEst;
+                        totalPagado = valorEntrada - dscTotal;
+                        ventasTotales.add(totalPagado);// 2da lista
+                        System.out.println("Usted ha comprado " + cantidadEntradas + " entrada(s) para el sector: " + ubicacion);
+                        System.out.println("Su descuento especial de Estudiante/Menor de edad es de: -$ "+dscTotal);
+                        System.out.println("El valor total de la(s) entrada(s) es de: $ " + totalPagado+" "+tipoUsuario);
+                        statusEntrada = "Pagado";
+                        } else if (edadUsuario >= 70) {
+                            valorEntrada = 37000 * cantidadEntradas;
+                            dscTotal = valorEntrada * dscTercera;
+                            totalPagado = valorEntrada - dscTotal;
+                            ventasTotales.add(totalPagado);// 2da lista
+                            System.out.println("Usted ha comprado " + cantidadEntradas + " entrada(s) para el sector: " + ubicacion);
+                            System.out.println("Su descuento especial de Tercera Edad es de: -$ "+dscTotal);
+                            System.out.println("El valor total de la(s) entrada(s) es de: $ " + totalPagado+" "+tipoUsuario);
+                            statusEntrada = "Pagado";
+                            } else if (edadUsuario >= 18) {
+                                valorEntrada = 37000 * cantidadEntradas;
+                                totalPagado = valorEntrada;
+                                ventasTotales.add(totalPagado); // 2da lista
+                                System.out.println("Usted ha comprado " + cantidadEntradas + " entrada(s) para el sector: " + ubicacion);
+                                System.out.println("El valor total de la(s) entrada(s) es de: $ "+totalPagado);
+                                statusEntrada = "Pagado";
+                                }
+                                
+                    codigoVerificacion = 1000 + (int) (Math.random() * 9000);
+                    
+                    for (int i = 0; i < cantidadEntradas; i++) {
+                        listaVentas.put(codigoVerificacion, nombreUsuario);
+                    }
+                    
+                    
+                    if (statusEntrada != "") {
+    System.out.println(" ===================================== BOLETA =====================================");
+    System.out.println(" ");
+    System.out.println(" =                                 Teatros F.S.A.                                 =");
+    System.out.println(" ");
+    System.out.println(" ===================================== BOLETA =====================================");
+    System.out.println("=           - Ubicación de la entrada: " + ubicacion+"                                 =");
+    if (edadUsuario <= 18 || edadUsuario >= 70) {
+    System.out.println("=           - Descuento realizado: -$ "+dscTotal);
+    }
+    System.out.println("=           - Valor total de la compra: $ " +totalPagado+"                                  =");
+    System.out.println("=           - Tipo Usuario: "+tipoUsuario);
+    }
+    for (Integer key : listaVentas.keySet()) {
+            System.out.println("=   - Su Código de verificación: " + key + " - Nombre de reserva entrada: " + listaVentas.get(key));
+        }
+    System.out.println("Por favor guarde su Código de Verificación. En caso de anular su compra, se le pedirá el Código de Verificación para hacerla efectiva.");
+    System.out.println(" =================================================================================");
+    System.out.println("              ¡Gracias por Asistir. Por favor disfrute la función!");
+    System.out.println(" =================================================================================");
+                    break;
+                        
+                        case 3: 
+                            
+                            ubicacion = "Arica";
+                                if (edadUsuario <= 18) {
+                                    System.out.println("--- Usted tiene un 10% de Descuento por ser Estudiante/Menor de edad. Su descuento se verá reflejado en el total de tu compra. ---");
+                                    tipoUsuario = "Estudiante / Menor de edad";
+                                } else if (edadUsuario >= 70) {
+                                        System.out.println("--- Usted tiene un 15% de Descuento por ser Adulto Mayor. Su descuento se verá reflejado en el total de tu compra. ---");
+                                        tipoUsuario = "Adulto Mayor";
+                                        } else if (edadUsuario >=18) {
+                                            tipoUsuario = "Público General";
+                                        }
+                                
+                        System.out.println("Ha seleccionado comprar entrada para el Sector: "+ubicacion);
+                        System.out.println("Por favor ingrese su nombre:");
+                        nombreUsuario = teclado.nextLine();
+                    
+
+                    System.out.println("Por favor ingrese la cantidad de entradas que desea comprar:");
+                    cantidadEntradas = teclado.nextInt();
+
+                    if (edadUsuario <= 18) {
+                        valorEntrada = 22000 * cantidadEntradas;
+                        dscTotal = valorEntrada * dscEst;
+                        totalPagado = valorEntrada - dscTotal;
+                        ventasTotales.add(totalPagado);// 2da lista
+                        System.out.println("Usted ha comprado " + cantidadEntradas + " entrada(s) para el sector: " + ubicacion);
+                        System.out.println("Su descuento especial de Estudiante/Menor de edad es de: -$ "+dscTotal);
+                        System.out.println("El valor total de la(s) entrada(s) es de: $ " + totalPagado+" "+tipoUsuario);
+                        statusEntrada = "Pagado";
+                        } else if (edadUsuario >= 70) {
+                            valorEntrada = 22000 * cantidadEntradas;
+                            dscTotal = valorEntrada * dscTercera;
+                            totalPagado = valorEntrada - dscTotal;
+                            ventasTotales.add(totalPagado);// 2da lista
+                            System.out.println("Usted ha comprado " + cantidadEntradas + " entrada(s) para el sector: " + ubicacion);
+                            System.out.println("Su descuento especial de Tercera Edad es de: -$ "+dscTotal);
+                            System.out.println("El valor total de la(s) entrada(s) es de: $ " + totalPagado+" "+tipoUsuario);
+                            statusEntrada = "Pagado";
+                            } else if (edadUsuario >= 18) {
+                                valorEntrada = 22000 * cantidadEntradas;
+                                totalPagado = valorEntrada;
+                                ventasTotales.add(totalPagado); // 2da lista
+                                System.out.println("Usted ha comprado " + cantidadEntradas + " entrada(s) para el sector: " + ubicacion);
+                                System.out.println("El valor total de la(s) entrada(s) es de: $ "+totalPagado);
+                                statusEntrada = "Pagado";
+                                }
+                                
+                    codigoVerificacion = 1000 + (int) (Math.random() * 9000);
+                    
+                    for (int i = 0; i < cantidadEntradas; i++) {
+                        listaVentas.put(codigoVerificacion, nombreUsuario);
+                    }
+                    
+                    
+                    if (statusEntrada != "") {
+    System.out.println(" ===================================== BOLETA =====================================");
+    System.out.println(" ");
+    System.out.println(" =                                 Teatros F.S.A.                                 =");
+    System.out.println(" ");
+    System.out.println(" ===================================== BOLETA =====================================");
+    System.out.println("=           - Ubicación de la entrada: " + ubicacion+"                                 =");
+    if (edadUsuario <= 18 || edadUsuario >= 70) {
+    System.out.println("=           - Descuento realizado: -$ "+dscTotal);
+    }
+    System.out.println("=           - Valor total de la compra: $ " +totalPagado+"                                  =");
+    System.out.println("=           - Tipo Usuario: "+tipoUsuario);
+    }
+    for (Integer key : listaVentas.keySet()) {
+            System.out.println("=   - Su Código de verificación: " + key + " - Nombre de reserva entrada: " + listaVentas.get(key));
+        }
+    System.out.println("Por favor guarde su Código de Verificación. En caso de anular su compra, se le pedirá el Código de Verificación para hacerla efectiva.");
+    System.out.println(" =================================================================================");
+    System.out.println("              ¡Gracias por Asistir. Por favor disfrute la función!");
+    System.out.println(" =================================================================================");
+                    break;
+                        default: System.out.println("Opción no válida. Por favor, ingrese una opción válida. Por ejemplo: 2");
+                        return;
+                            
+                                }
+    
+    } 
+            if (opcionUsuario == 2) {
+                        System.out.println("Las ventas el día de hoy han sido: "+ventasTotales); //Lista ventasTotales
+                    
+                    double suma = ventasTotales.stream().mapToDouble(d -> d).sum();
+
+                    System.out.println("El total de ganancias de entradas el dia de hoy fué de: $ " + suma);
+            }
+                
+           
+            }while (opcionUsuario !=3);   
+            
+    } 
+}
