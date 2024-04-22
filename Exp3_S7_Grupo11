@@ -1,6 +1,7 @@
 package ejercicio.s5;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,6 +12,7 @@ public class EjercicioS5 {
     static double dscTercera = .15;
     static String tipoUsuario = "";
     static double dscTotal = 0;
+    static int cantidadEntradas = 0;
     
     public static void main(String[] args) {
         
@@ -24,9 +26,11 @@ public class EjercicioS5 {
     String statusEntrada = "";
     int codigoVerificacion = 0;
     int edadUsuario = 0;
+    int codigoEntrada = 0;
     
     HashMap<Integer, String> listaVentas = new HashMap<>();
     List<Double> ventasTotales = new ArrayList<Double>();
+    List<String> ubicaciones = new ArrayList<String>();
     Scanner teclado = new Scanner(System.in);
     
     opcionUsuario = 0;
@@ -36,9 +40,10 @@ public class EjercicioS5 {
         System.out.println("Hoy en nuestra cartelera: "+obraTeatro);
         System.out.println("Por favor digite una opción válida");
         System.out.println("[1] Para COMPRAR entradas");
-        System.out.println("[2] Para ENTRAR al Resumen de ventas / ingresos totales");
-        System.out.println("[3] Para SALIR");
-        // QUEDA POR HACER: ELIMINAR ENTRADA, BUSCAR ENTRADA, CAMBIAR EL RESUMEN DE VENTAS A DICCIONARIO DONDE MUESTRE VALOR PAGADO Y UBICACIÓN DE ENTRADA.
+        System.out.println("[2] Para BUSCAR su entrada (Se requiere su Código de Verificación, adjuntado en la Boleta de su Compra).");
+        System.out.println("[3] Para ELIMINAR o Anular su compra. (Se requiere su Código de Verificación, adjuntado en la Boleta de su Compra).");
+        System.out.println("[4] Para ENTRAR al Resumen de ventas / Ingresos totales del día.");
+        System.out.println("[5] Para SALIR");
         opcionUsuario = teclado.nextInt();
         
             if (opcionUsuario == 1) {
@@ -105,7 +110,7 @@ public class EjercicioS5 {
                     for (int i = 0; i < cantidadEntradas; i++) {
                         listaVentas.put(codigoVerificacion, nombreUsuario);
                     }
-                    
+                    ubicaciones.add(ubicacion);
                     
                     if (statusEntrada != "") {
     System.out.println(" ===================================== BOLETA =====================================");
@@ -114,6 +119,7 @@ public class EjercicioS5 {
     System.out.println(" ");
     System.out.println(" ===================================== BOLETA =====================================");
     System.out.println("=           - Ubicación de la entrada: " + ubicacion+"                                 =");
+    System.out.println("=           - Cantidad de Entradas: "+cantidadEntradas);
     if (edadUsuario <= 18 || edadUsuario >= 70) {
     System.out.println("=           - Descuento realizado: -$ "+dscTotal);
     }
@@ -182,6 +188,7 @@ public class EjercicioS5 {
                         listaVentas.put(codigoVerificacion, nombreUsuario);
                     }
                     
+                    ubicaciones.add(ubicacion);
                     
                     if (statusEntrada != "") {
     System.out.println(" ===================================== BOLETA =====================================");
@@ -190,6 +197,7 @@ public class EjercicioS5 {
     System.out.println(" ");
     System.out.println(" ===================================== BOLETA =====================================");
     System.out.println("=           - Ubicación de la entrada: " + ubicacion+"                                 =");
+    System.out.println("=           - Cantidad de Entradas: "+cantidadEntradas);
     if (edadUsuario <= 18 || edadUsuario >= 70) {
     System.out.println("=           - Descuento realizado: -$ "+dscTotal);
     }
@@ -259,6 +267,7 @@ public class EjercicioS5 {
                         listaVentas.put(codigoVerificacion, nombreUsuario);
                     }
                     
+                    ubicaciones.add(ubicacion);
                     
                     if (statusEntrada != "") {
     System.out.println(" ===================================== BOLETA =====================================");
@@ -267,6 +276,7 @@ public class EjercicioS5 {
     System.out.println(" ");
     System.out.println(" ===================================== BOLETA =====================================");
     System.out.println("=           - Ubicación de la entrada: " + ubicacion+"                                 =");
+    System.out.println("=           - Cantidad de Entradas: "+cantidadEntradas);
     if (edadUsuario <= 18 || edadUsuario >= 70) {
     System.out.println("=           - Descuento realizado: -$ "+dscTotal);
     }
@@ -288,15 +298,80 @@ public class EjercicioS5 {
     
     } 
             if (opcionUsuario == 2) {
-                        System.out.println("Las ventas el día de hoy han sido: "+ventasTotales); //Lista ventasTotales
+                System.out.println(" ------------------------ BUSCADOR DE ENTRADAS ------------------------");
+                System.out.println("Para Buscar su entrada, su boleta e información relevante, por favor introduzca el Código de Verificación de la entrada.");
+                System.out.println("Recuerde que el Código de Verificación fué adjuntado en su boleta al momento de su compra.");
+                System.out.println("Ingrese el Codigo de Verificación: ");
+                codigoEntrada = teclado.nextInt();
+                
+                if (listaVentas.containsKey(codigoEntrada)) {
+                    System.out.println("Entrada(s) Encontrada. Detalles a continuación: ");
+                    System.out.println(" ");
+                    System.out.println(" ===================================== BOLETA =====================================");
+                    System.out.println(" ");
+                    System.out.println(" =                                 Teatros F.S.A.                                 =");
+                    System.out.println(" ");
+                    System.out.println(" ===================================== BOLETA =====================================");
+                    System.out.println("=           - Ubicación de la entrada: " + ubicacion+"                                 =");
+                    System.out.println("=           - Cantidad de Entradas: "+cantidadEntradas);
+                        if (edadUsuario <= 18 || edadUsuario >= 70) {
+                            System.out.println("=           - Descuento realizado: -$ "+dscTotal);
+                            }
+                    System.out.println("=           - Valor total de la compra: $ " +totalPagado+"                                  =");
+                    System.out.println("=           - Tipo Usuario: "+tipoUsuario);
+                        for (Integer key : listaVentas.keySet()) {
+                             System.out.println("=   - Su Código de verificación: " + key + " - Nombre de reserva entrada: " + listaVentas.get(key));
+                            }
+                    System.out.println("Por favor guarde su Código de Verificación. En caso de anular su compra, se le pedirá el Código de Verificación para hacerla efectiva.");
+                    System.out.println(" =================================================================================");
+                    System.out.println("              ¡Gracias por Asistir. Por favor disfrute la función!");
+                    System.out.println(" =================================================================================");
+                        } else {
+                           System.out.println("El código de Verificación no es válido. Su entrada no ha sido encontada.");
+                            }
+                
+            }
+            if (opcionUsuario == 3) {
+                System.out.println("----------------- ANULAR ENTRADA(S) -----------------");
+                System.out.println(" ");
+                System.out.println("Para Anular su compra, por favor introduzca el Código de Verificación de la entrada.");
+                System.out.println("Recuerde que el Código de Verificación fué adjuntado en su boleta al momento de su compra.");
+                System.out.println("Ingrese el Codigo de Verificación: ");
+                codigoEntrada = teclado.nextInt();
+                
+                if (listaVentas.containsKey(codigoEntrada)) {
+                    listaVentas.remove(codigoEntrada);
+                    System.out.println("Entrada(s) Encontradas.");
+                    System.out.println("----- Eliminando Entradas, este proceso es irreversible... -----");
+                    System.out.println("3...");
+                    System.out.println("2...");
+                    System.out.println("1...");
+                    System.out.println("Su compra ha sido anulada con éxito.");
+                    System.out.println("El reembolso de su dinero estará disponible entre 1 a 7 días hábiles, dependiendo de su Banco.");
+                } else {
+                    System.out.println("El código de Verificación no es válido. Su entrada no ha sido encontada.");
+                }
+                
+            }
+            
+            if (opcionUsuario == 4) {
+                        System.out.println("-------------- FINANZAS TEATRO F.S.A. --------------");
+                        System.out.println("En esta sección podrás encontrar una lista con todas las ventas efectuadas hoy, además de su correspondiente ubicación.");
+                        System.out.println("Las ventas de entradas y sus respectivas ubicaciones han sido: ");
+                        int maxSize = Math.max(ventasTotales.size(), ubicaciones.size());
+                        for (int i = 0; i < maxSize; i++) {
+                            String ventaTotal2 = i < ventasTotales.size() ? ventasTotales.get(i).toString() : "";
+                            String ubicacion2 = i < ubicaciones.size() ? ubicaciones.get(i) : "";
+                            System.out.println("Venta Total: " + ventaTotal2 + ", Ubicación: " + ubicacion2);
+                            }
                     
-                    double suma = ventasTotales.stream().mapToDouble(d -> d).sum();
+                        double suma = ventasTotales.stream().mapToDouble(d -> d).sum();
 
-                    System.out.println("El total de ganancias de entradas el dia de hoy fué de: $ " + suma);
+                        System.out.println("El total de ganancias de entradas el dia de hoy fué de: $ " + suma);
             }
                 
            
-            }while (opcionUsuario !=3);   
-            
+            }while (opcionUsuario !=5);
+       
     } 
 }
