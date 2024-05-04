@@ -1,10 +1,10 @@
-package examenfinal;
+package eft_s9_sebastian_olave;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.HashMap;
 
-public class ExamenFinal {
+public class EFT_S9_Sebastian_Olave {
 
     static String obraTeatro = "Princesa Violeta nunca se baña Full Speed 3D Dolby Vision IMAX";
     static String sectorUsuario = "";
@@ -353,9 +353,6 @@ public class ExamenFinal {
             System.out.println("Error. Código de Verificación no encontrado.");
         }
     }
-    
-    
-    
     public static void main(String[] args) {
        
         int opcionUsuario = 0;
