@@ -1,0 +1,417 @@
+package examenfinal;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.HashMap;
+
+public class ExamenFinal {
+
+    static String obraTeatro = "Princesa Violeta nunca se baña Full Speed 3D Dolby Vision IMAX";
+    static String sectorUsuario = "";
+    static int codigoVerificacion = 0;
+    static int edadUsuario = 0;
+    static int totalPagar = 0;
+    static String tipoUsuario = "";
+    static int cantidadEntradas = 0;
+    static String nombreUsuario = "";
+    static int descuento = 0;
+    static int codigoEntrada = 0;
+    static int codigoVerificacionDos = 0;
+    static String nuevaUbicacion = "";
+    
+    static HashMap <Integer, String> listaVentas = new HashMap <>();
+    static ArrayList <Integer> stockCordillera = new ArrayList <>();
+    static ArrayList <Integer> stockOceano = new ArrayList<>();
+    static ArrayList <Integer> stockArica = new ArrayList <>();
+    static Scanner teclado = new Scanner(System.in);
+    
+    public static void sectorCordillera() {
+        
+    stockCordillera.add(70);
+    codigoVerificacion = 1000 + (int) (Math.random() * 9000);
+    sectorUsuario = "Sector CORDILLERA";
+    tipoUsuario = "Público General";
+    int valorEntrada = 30000;
+    try {
+    System.out.println("El Stock total disponible actualmente para "+sectorUsuario+" Es: "+stockCordillera.get(0));
+        System.out.println("Usted ha seleccionado: "+sectorUsuario+". El valor de la entrada es de: $ "+valorEntrada);
+        System.out.println("Por favor seleccione la cantidad de entradas que desea comprar");
+        cantidadEntradas = teclado.nextInt();
+    } catch (Exception e) {
+            throw new RuntimeException("ERROR: DEBES INGRESAR UN NÚMERO CANTIDAD DE ENTRADAS VÁLIDO. EJEMPLO: 3" + e);  
+    }
+        
+        teclado.nextLine();
+        try {
+        System.out.println("Usted ha seleccionado la cantidad de "+cantidadEntradas+" Entradas.");
+        System.out.println("Por favor, escriba su Nombre y Apellido. Tenga en cuenta, que las entradas irán nominadas al nombre ingresado.");
+        nombreUsuario = teclado.nextLine();
+        } catch (Exception e) {
+            throw new RuntimeException("ERROR: DEBES INGRESAR UN NOMBRE VÁLIDO. EJEMPLO: SEBASTIAN PEREZ" + e);
+    }
+        if (edadUsuario <= 18) {
+            tipoUsuario = "Beneficio Estudiante y/o Menor de Edad";
+            int total = valorEntrada * cantidadEntradas;
+            descuento = total / 10;
+            totalPagar = total - descuento;
+            System.out.println("Debido a su edad, usted tiene un: "+tipoUsuario+ "Que se traduce en un 10% del total de tu compra");
+            System.out.println("Tu descuento es de: $ "+descuento);
+            System.out.println("Y tu total a pagar es de: $ "+totalPagar);
+            
+    } else if (edadUsuario >= 70) {
+               tipoUsuario = "Beneficio Adulto Mayor";
+               int total = valorEntrada * cantidadEntradas;
+               descuento = total / 15;
+               totalPagar = total - descuento;
+               System.out.println("Debido a su edad, usted tiene un: "+tipoUsuario+ "Que se traduce en un 15% del total de tu compra");
+               System.out.println("Tu descuento es de: $ "+descuento);
+               System.out.println("Y tu total a pagar es de: $ "+totalPagar);
+    } else if (edadUsuario >= 18) {
+               tipoUsuario = "Público General";
+               int total = valorEntrada * cantidadEntradas;
+               totalPagar = total;
+               System.out.println("Tu total a pagar es de: $ "+totalPagar);
+    }
+     
+    if (cantidadEntradas <= stockCordillera.get(0) && totalPagar != 0) {
+        for (int i = 0; i < cantidadEntradas; i++) {
+                        listaVentas.put(codigoVerificacion, nombreUsuario);
+                    }
+        stockCordillera.set(0, stockCordillera.get(0)-cantidadEntradas);        
+    System.out.println(" ===================================== BOLETA =====================================");
+    System.out.println(" ");
+    System.out.println(" =                                 Teatros F.S.A.                                 =");
+    System.out.println(" ");
+    System.out.println(" ===================================== BOLETA =====================================");
+    System.out.println("=           - Ubicación de la entrada: " + sectorUsuario+"                                 =");
+    System.out.println("=           - Cantidad de Entradas: "+cantidadEntradas);
+    if (edadUsuario <= 18 || edadUsuario >= 70) {
+    System.out.println("=           - Descuento realizado: -$ "+descuento);
+    }
+    System.out.println("=           - Valor total de la compra: $ " +totalPagar+"                                  =");
+    System.out.println("=           - Tipo Usuario: "+tipoUsuario);
+    for (Integer key : listaVentas.keySet()) {
+            System.out.println("=   - Su Código de verificación: " + key + " - Nombre de reserva entrada: " + listaVentas.get(key));
+        }
+    System.out.println("Por favor guarde su Código de Verificación. En caso de anular su compra, se le pedirá el Código de Verificación para hacerla efectiva.");
+    System.out.println(" =================================================================================");
+    System.out.println("              ¡Gracias por Asistir. Por favor disfrute la función!");
+    System.out.println(" =================================================================================");
+    }
+    }
+    public static void sectorOceano() {
+        
+    stockOceano.add(70);
+    codigoVerificacion = 1000 + (int) (Math.random() * 9000);
+    sectorUsuario = "Sector OCEANO";
+    tipoUsuario = "Público General";
+    int valorEntrada = 35000;
+    try {
+    System.out.println("El Stock total disponible actualmente para "+sectorUsuario+" Es: "+stockOceano.get(0));
+        System.out.println("Usted ha seleccionado: "+sectorUsuario+". El valor de la entrada es de: $ "+valorEntrada);
+        System.out.println("Por favor seleccione la cantidad de entradas que desea comprar");
+        cantidadEntradas = teclado.nextInt();
+    } catch (Exception e) {
+            throw new RuntimeException("ERROR: DEBES INGRESAR UN NÚMERO CANTIDAD DE ENTRADAS VÁLIDO." + e);        
+    }
+        teclado.nextLine();
+        try {
+        System.out.println("Usted ha seleccionado la cantidad de "+cantidadEntradas+" Entradas.");
+        System.out.println("Por favor, escriba su Nombre y Apellido. Tenga en cuenta, que las entradas irán nominadas al nombre ingresado.");
+        nombreUsuario = teclado.nextLine();
+        } catch (Exception e) {
+            throw new RuntimeException("ERROR: DEBES INGRESAR UN NOMBRE VÁLIDO. EJEMPLO: SEBASTIAN PEREZ" + e);  
+    }
+        
+        if (edadUsuario <= 18) {
+            tipoUsuario = "Beneficio Estudiante y/o Menor de Edad";
+            int total = valorEntrada * cantidadEntradas;
+            descuento = total / 10;
+            totalPagar = total - descuento;
+            System.out.println("Debido a su edad, usted tiene un: "+tipoUsuario+ "Que se traduce en un 10% del total de tu compra");
+            System.out.println("Tu descuento es de: $ "+descuento);
+            System.out.println("Y tu total a pagar es de: $ "+totalPagar);
+            
+    } else if (edadUsuario >= 70) {
+               tipoUsuario = "Beneficio Adulto Mayor";
+               int total = valorEntrada * cantidadEntradas;
+               descuento = total / 15;
+               totalPagar = total - descuento;
+               System.out.println("Debido a su edad, usted tiene un: "+tipoUsuario+ "Que se traduce en un 15% del total de tu compra");
+               System.out.println("Tu descuento es de: $ "+descuento);
+               System.out.println("Y tu total a pagar es de: $ "+totalPagar);
+    } else if (edadUsuario >= 18) {
+               tipoUsuario = "Público General";
+               int total = valorEntrada * cantidadEntradas;
+               totalPagar = total;
+               System.out.println("Tu total a pagar es de: $ "+totalPagar);
+    }
+     
+    if (cantidadEntradas <= stockOceano.get(0) && totalPagar != 0) {
+        for (int i = 0; i < cantidadEntradas; i++) {
+                        listaVentas.put(codigoVerificacion, nombreUsuario);
+                    }
+        stockOceano.set(0, stockOceano.get(0)-cantidadEntradas);         
+    System.out.println(" ===================================== BOLETA =====================================");
+    System.out.println(" ");
+    System.out.println(" =                                 Teatros F.S.A.                                 =");
+    System.out.println(" ");
+    System.out.println(" ===================================== BOLETA =====================================");
+    System.out.println("=           - Ubicación de la entrada: " + sectorUsuario+"                                 =");
+    System.out.println("=           - Cantidad de Entradas: "+cantidadEntradas);
+    if (edadUsuario <= 18 || edadUsuario >= 70) {
+    System.out.println("=           - Descuento realizado: -$ "+descuento);
+    }
+    System.out.println("=           - Valor total de la compra: $ " +totalPagar+"                                  =");
+    System.out.println("=           - Tipo Usuario: "+tipoUsuario);
+    for (Integer key : listaVentas.keySet()) {
+            System.out.println("=   - Su Código de verificación: " + key + " - Nombre de reserva entrada: " + listaVentas.get(key));
+        }
+    System.out.println("Por favor guarde su Código de Verificación. En caso de anular su compra, se le pedirá el Código de Verificación para hacerla efectiva.");
+    System.out.println(" =================================================================================");
+    System.out.println("              ¡Gracias por Asistir. Por favor disfrute la función!");
+    System.out.println(" =================================================================================");
+    }
+    }
+    public static void sectorArica() {
+        
+    stockArica.add(60);
+    codigoVerificacion = 1000 + (int) (Math.random() * 9000);
+    sectorUsuario = "Sector ARICA";
+    tipoUsuario = "Público General";
+    int valorEntrada = 20000;
+    try {
+        System.out.println("El Stock total disponible actualmente para "+sectorUsuario+" Es: "+stockArica.get(0));
+        System.out.println("Usted ha seleccionado: "+sectorUsuario+". El valor de la entrada es de: $ "+valorEntrada);
+        System.out.println("Por favor seleccione la cantidad de entradas que desea comprar");
+        cantidadEntradas = teclado.nextInt();
+    } catch (Exception e) {
+            throw new RuntimeException("ERROR: DEBES INGRESAR UN NÚMERO CANTIDAD DE ENTRADAS VÁLIDO." + e);
+    }
+        teclado.nextLine();
+        try {
+        System.out.println("Usted ha seleccionado la cantidad de "+cantidadEntradas+" Entradas.");
+        System.out.println("Por favor, escriba su Nombre y Apellido. Tenga en cuenta, que las entradas irán nominadas al nombre ingresado.");
+        nombreUsuario = teclado.nextLine();
+        } catch (Exception e) {
+            throw new RuntimeException("ERROR: DEBES INGRESAR UN NOMBRE VÁLIDO. EJEMPLO: SEBASTIAN PEREZ" + e);
+    }
+        
+        if (edadUsuario <= 18) {
+            tipoUsuario = "Beneficio Estudiante y/o Menor de Edad";
+            int total = valorEntrada * cantidadEntradas;
+            descuento = total / 10;
+            totalPagar = total - descuento;
+            System.out.println("Debido a su edad, usted tiene un: "+tipoUsuario+ "Que se traduce en un 10% del total de tu compra");
+            System.out.println("Tu descuento es de: $ "+descuento);
+            System.out.println("Y tu total a pagar es de: $ "+totalPagar);
+            
+    } else if (edadUsuario >= 70) {
+               tipoUsuario = "Beneficio Adulto Mayor";
+               int total = valorEntrada * cantidadEntradas;
+               descuento = total / 15;
+               totalPagar = total - descuento;
+               System.out.println("Debido a su edad, usted tiene un: "+tipoUsuario+ "Que se traduce en un 15% del total de tu compra");
+               System.out.println("Tu descuento es de: $ "+descuento);
+               System.out.println("Y tu total a pagar es de: $ "+totalPagar);
+    } else if (edadUsuario >= 18) {
+               tipoUsuario = "Público General";
+               int total = valorEntrada * cantidadEntradas;
+               totalPagar = total;
+               System.out.println("Tu total a pagar es de: $ "+totalPagar);
+    }
+     
+    if (cantidadEntradas <= stockArica.get(0) && totalPagar != 0) {
+        for (int i = 0; i < cantidadEntradas; i++) {
+                        listaVentas.put(codigoVerificacion, nombreUsuario);
+                    }
+        stockArica.set(0, stockArica.get(0)-cantidadEntradas);           
+    System.out.println(" ===================================== BOLETA =====================================");
+    System.out.println(" ");
+    System.out.println(" =                                 Teatros F.S.A.                                 =");
+    System.out.println(" ");
+    System.out.println(" ===================================== BOLETA =====================================");
+    System.out.println("=           - Ubicación de la entrada: " + sectorUsuario+"                                 =");
+    System.out.println("=           - Cantidad de Entradas: "+cantidadEntradas);
+    if (edadUsuario <= 18 || edadUsuario >= 70) {
+    System.out.println("=           - Descuento realizado: -$ "+descuento);
+    }
+    System.out.println("=           - Valor total de la compra: $ " +totalPagar+"                                  =");
+    System.out.println("=           - Tipo Usuario: "+tipoUsuario);
+    for (Integer key : listaVentas.keySet()) {
+            System.out.println("=   - Su Código de verificación: " + key + " - Nombre de reserva entrada: " + listaVentas.get(key));
+        }
+    System.out.println("Por favor guarde su Código de Verificación. En caso de anular su compra, se le pedirá el Código de Verificación para hacerla efectiva.");
+    System.out.println(" =================================================================================");
+    System.out.println("              ¡Gracias por Asistir. Por favor disfrute la función!");
+    System.out.println(" =================================================================================");
+    }
+    }
+    public static void buscarEntradas() {
+    System.out.println(" ------------------------ BUSCADOR DE ENTRADAS ------------------------");
+                System.out.println("Para Buscar su entrada, su boleta e información relevante, por favor introduzca el Código de Verificación de la entrada.");
+                System.out.println("Recuerde que el Código de Verificación fué adjuntado en su boleta al momento de su compra.");
+                System.out.println("Ingrese el Codigo de Verificación: ");
+                codigoEntrada = teclado.nextInt();
+                
+                if (listaVentas.containsKey(codigoEntrada)) {
+    System.out.println(" ===================================== BOLETA =====================================");
+    System.out.println(" ");
+    System.out.println(" =                                 Teatros F.S.A.                                 =");
+    System.out.println(" ");
+    System.out.println(" ===================================== BOLETA =====================================");
+    System.out.println("=           - Ubicación de la entrada: " + sectorUsuario+"                                 =");
+    System.out.println("=           - Cantidad de Entradas: "+cantidadEntradas);
+    if (edadUsuario <= 18 || edadUsuario >= 70) {
+    System.out.println("=           - Descuento realizado: -$ "+descuento);
+    }
+    System.out.println("=           - Valor total de la compra: $ " +totalPagar+"                                  =");
+    System.out.println("=           - Tipo Usuario: "+tipoUsuario);
+    for (Integer key : listaVentas.keySet()) {
+            System.out.println("=   - Su Código de verificación: " + key + " - Nombre de reserva entrada: " + listaVentas.get(key));
+        }
+    System.out.println("Por favor guarde su Código de Verificación. En caso de anular su compra, se le pedirá el Código de Verificación para hacerla efectiva.");
+    System.out.println(" =================================================================================");
+    System.out.println("              ¡Gracias por Asistir. Por favor disfrute la función!");
+    System.out.println(" =================================================================================");
+                }else {
+                           System.out.println("El código de Verificación no es válido. Su entrada no ha sido encontada.");
+                            }
+    }
+    public static void anularEntradas() {
+                System.out.println("----------------- ANULAR ENTRADA(S) -----------------");
+                System.out.println(" ");
+                System.out.println("Para Anular su compra, por favor introduzca el Código de Verificación de la entrada.");
+                System.out.println("Recuerde que el Código de Verificación fué adjuntado en su boleta al momento de su compra.");
+                System.out.println("Ingrese el Codigo de Verificación: ");
+                codigoEntrada = teclado.nextInt();
+                
+                if (listaVentas.containsKey(codigoEntrada)) {
+                    listaVentas.remove(codigoEntrada);
+                    System.out.println("Entrada(s) Encontradas.");
+                    System.out.println("----- Eliminando Entradas, este proceso es irreversible... -----");
+                    System.out.println("3...");
+                    System.out.println("2...");
+                    System.out.println("1...");
+                    System.out.println("Su compra ha sido anulada con éxito.");
+                    System.out.println("El reembolso de su dinero estará disponible entre 1 a 7 días hábiles, dependiendo de su Banco.");
+                } else {
+                    System.out.println("El código de Verificación no es válido. Su entrada no ha sido encontada.");
+                }
+                
+            }
+    public static void cambiarEntradas() {
+        System.out.println("---------------------- MODIFICA TU(S) ENTRADA(S) ----------------------");
+        System.out.println(" ");
+        System.out.println("Aquí podrás cambiar de sector tus entradas, Por ejemplo: Cambiar localidad de Arica a Cordillera.");
+        System.out.println("Recuerda que al Modificar tu(s) entrada(s), tu antigua compra quedará nula. Y se creará una nueva compra.");
+        System.out.println("El reembolso de la compra anulada se hará efectivo entre 1 a 7 días hábiles, dependiendo de su Banco.");
+        System.out.println("Para modificar tu entrada, Por favor introduzca el Código de Verificación de la entrada.");
+        System.out.println("Recuerde que el Código de Verificación fué adjuntado en su boleta al momento de su compra.");
+        System.out.println("Ingrese el Código de Verificación: ");
+        codigoEntrada = teclado.nextInt();
+        
+        if (listaVentas.containsKey(codigoEntrada)) {
+            for (Integer key : listaVentas.keySet()) {
+                             System.out.println(" - Nombre de reserva entrada: " + listaVentas.get(key));
+                             nombreUsuario = listaVentas.get(key);
+                            }
+            listaVentas.remove(codigoEntrada);
+            System.out.println("Digite la opción de la nueva ubicación deseada");
+            System.out.println("Recuerde que las entradas son intransferibles, es decir, no se puede asignar un nuevo dueño");
+            System.out.println("Sólo se puede cambiar la localidad.");
+            System.out.println("[1] Para entrada Sector Cordillera");
+            System.out.println("[2] Para entrada Sector Océano");
+            System.out.println("[3] Para entrada Sector Arica");
+          
+            int nuevaOpcion = teclado.nextInt();
+                if (nuevaOpcion == 1) {
+                    nuevaUbicacion = "Cordillera";
+                    System.out.println("Su nueva ubicación es: "+nuevaUbicacion);
+                    codigoVerificacionDos = 1000 + (int) (Math.random() * 9000);
+                    System.out.println("Su nuevo Código de Verificación es: "+codigoVerificacionDos);
+                    listaVentas.put(codigoVerificacionDos, nombreUsuario);
+                    System.out.println("Muchas Gracias "+nombreUsuario+"."+" Por favor disfrute de la función.");
+                }
+                    if (nuevaOpcion == 2) {
+                    nuevaUbicacion = "Océano";
+                    System.out.println("Su nueva ubicación es: "+nuevaUbicacion);
+                    codigoVerificacionDos = 1000 + (int) (Math.random() * 9000);
+                    System.out.println("Su nuevo Código de Verificación es: "+codigoVerificacionDos);
+                    listaVentas.put(codigoVerificacionDos, nombreUsuario);
+                    System.out.println("Muchas Gracias "+nombreUsuario+"."+" Por favor disfrute de la función.");
+                    }
+                    if (nuevaOpcion == 3) {
+                    nuevaUbicacion = "Arica";
+                    System.out.println("Su nueva ubicación es: "+nuevaUbicacion);
+                    codigoVerificacionDos = 1000 + (int) (Math.random() * 9000);
+                    System.out.println("Su nuevo Código de Verificación es: "+codigoVerificacionDos);
+                    listaVentas.put(codigoVerificacionDos, nombreUsuario);
+                    System.out.println("Muchas Gracias "+nombreUsuario+"."+" Por favor disfrute de la función.");
+                    }
+        } else {
+            System.out.println("Error. Código de Verificación no encontrado.");
+        }
+    }
+    
+    
+    
+    public static void main(String[] args) {
+       
+        int opcionUsuario = 0;
+        int opcionSectores = 0;
+        
+        do {
+        
+        System.out.println("---------------------- Bienvenidos al Teatro Full Speed Ahead ----------------------");
+        System.out.println("Hoy en nuestra cartelera: "+obraTeatro);
+        System.out.println("Por favor digite una opción válida");
+        System.out.println("[1] Para COMPRAR Entradas");
+        System.out.println("[2] Para BUSCAR su Entrada (Se requiere su Código de Verificación, adjuntado en la Boleta de su Compra).");
+        System.out.println("[3] Para ELIMINAR o Anular su compra. (Se requiere su Código de Verificación, adjuntado en la Boleta de su Compra).");
+        System.out.println("[4] Para MODIFICAR o Cambiar tus entradas de localidad");
+        System.out.println("[5] Para SALIR");
+        opcionUsuario = teclado.nextInt();
+        if (opcionUsuario == 1){
+            
+            System.out.println("------------------ Este es el Sistema de Ventas 3.0 Teatro F.S.A. ------------------");
+            System.out.println("Por favor, ingrese su edad. Ejemplo: 30");
+            edadUsuario = teclado.nextInt();
+            System.out.println("Para comprar entradas, por favor digite una opción válida");
+            System.out.println("[1] Para COMPRAR Entradas Sector Cordillera");
+            System.out.println("[2] Para COMPRAR Entradas Sector Océano");
+            System.out.println("[3] Para COMPRAR Entradas Sector Arica");
+            opcionSectores = teclado.nextInt();
+
+                switch (opcionSectores) {
+                    
+                    case 1: sectorCordillera();
+                    break;
+                    
+                    case 2: sectorOceano();
+                    break;
+                    
+                    case 3: sectorArica();
+                    break;
+                    default: System.out.println("Opción ingresada no es correcta");
+                    return;
+                }                   
+        }
+        
+        if (opcionUsuario == 2) {
+            buscarEntradas();
+        }
+        
+        if (opcionUsuario == 3) {
+            anularEntradas();      
+            }
+        if (opcionUsuario == 4) {
+            cambiarEntradas();
+        }
+        
+        } while (opcionUsuario != 5);
+        
+        teclado.close();
+    }
+    
+}
