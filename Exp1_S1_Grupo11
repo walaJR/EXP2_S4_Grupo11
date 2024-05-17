@@ -1,0 +1,208 @@
+package com.duoc.banco;
+
+import com.duoc.clientes.Clientes;
+import com.duoc.cuentasbancarias.CuentasBancarias;
+import java.util.Scanner;
+
+public class BancoMain {
+
+    static String rutUsuario = "";
+    static String nombreCompleto = "";
+    static String apellidoPaternoUsuario = "";
+    static String apellidoMaternoUsuario = "";
+    static String domicilioUsuario = "";
+    static String comunaUsuario = "";
+    static int telefonoUsuario = 0;
+    static int numeroCuentaUsuario = 0;
+    static int saldoUsuario = 0;
+    static int deposito = 0;
+    static int giroUsuario = 0;
+    static int nuevoSaldo = 0;
+    static int seleccionUsuario = 0;
+    static int opcionUsuario = 0;
+    static String ingresoRut = "";
+    
+    static Scanner teclado = new Scanner(System.in);
+    
+    static Clientes clientesBanco = new Clientes();
+    static CuentasBancarias cuentasClientes = new CuentasBancarias();
+    
+    public static void registrarCliente() {
+        teclado.nextLine();
+        System.out.println(" -------------------------- REGISTRO DE CLIENTES --------------------------");
+        System.out.println("Esta es la plataforma de registro de clientes --- Banco Internacional FSA ---");
+        System.out.println("Por favor, digite su Rut. Con puntos, guión y dígito verificador. Ejemplo: 18.739.412-0");
+        rutUsuario = teclado.nextLine();
+        if (rutUsuario.length() >= 11 && rutUsuario.length() <= 12) {
+            numeroCuentaUsuario = 100000000 + (int) (Math.random() * 900000000);
+            saldoUsuario = 0;
+            clientesBanco.setRut(rutUsuario);
+            System.out.println("Rut ingresado correctamente");
+        }
+        else {
+            System.out.println("Inválido. Por favor digite su rut. Con puntos, guión y dígito verificacor. Ejemplo: 18.739.412-0");
+        }
+        System.out.println("Ingrese su nombre completo. Ejemplo: Sebastian Alejandro");
+        nombreCompleto = teclado.nextLine();
+        if (!nombreCompleto.isEmpty()) {
+        clientesBanco.setNombre(nombreCompleto);
+            System.out.println("Nombre ingresado correctamente");
+        } else {
+            System.out.println("Inválido. Por favor ingrese su nombre completo. Ejemplo: Sebastián Alejandro");
+        }
+        System.out.println("Ingrese su Apellido Paterno. Ejemplo: Olave");
+        apellidoPaternoUsuario = teclado.nextLine();
+        if (!apellidoPaternoUsuario.isEmpty()) {
+            clientesBanco.setApellidoPaterno(apellidoPaternoUsuario);
+            System.out.println("Apellido Paterno ingresado correctamente");
+        } else {
+            System.out.println("Inválido. Por favor ingrese su Apellido Paterno. Ejemplo: Olave");
+        }
+        System.out.println("Ingrese su Apellido Materno. Ejemplo: Yanez");
+        apellidoMaternoUsuario = teclado.nextLine();
+        if (!apellidoMaternoUsuario.isEmpty()) {
+        clientesBanco.setApellidoMaterno(apellidoMaternoUsuario);
+            System.out.println("Apellido Materno ingresado correctamente");
+        } else {
+            System.out.println("Inválido. Por favor ingrese su Apellido Materno. Ejemplo: Yanez");
+        }
+        System.out.println("Ingrese su Domicilio. Ejemplo: La Nina #3560");
+        domicilioUsuario = teclado.nextLine();
+        if (!domicilioUsuario.isEmpty()) {
+        clientesBanco.setDomicilio(domicilioUsuario);
+            System.out.println("Domicilio ingresado correctamente");
+        } else {
+            System.out.println("Inválido. Por favor ingrese su domicilio. Ejemplo: La Nina #3560");
+        }
+        System.out.println("Ingrese su Comuna. Ejemplo: Cerrillos");
+        comunaUsuario = teclado.nextLine();
+        if (!comunaUsuario.isEmpty()) {
+        clientesBanco.setComuna(comunaUsuario);
+            System.out.println("Comuna ingresada correctamente");
+        }
+        System.out.println("Ingrese su Número de Teléfono: Ejemplo: 963867456");
+        telefonoUsuario = teclado.nextInt();
+        if (telefonoUsuario >0) {
+        clientesBanco.setTelefono(telefonoUsuario);
+            System.out.println("Telefono ingresado correctamente");
+        } else {
+            System.out.println("Inválido. Por favor ingrese su teléfono. Ejemplo: 963867456");
+        }
+        System.out.println("Proceso exitoso. Se ha creado tu cuenta Bancaria");
+        System.out.println("A continuación, tu número de cuenta. ¡Anótalo, gúardalo! ¡No lo olvides!");
+        System.out.println("Tu Número de cuenta es: " + numeroCuentaUsuario);
+        clientesBanco.setCuentaBancaria(numeroCuentaUsuario);
+        cuentasClientes.setNumeroCuenta(numeroCuentaUsuario);
+        cuentasClientes.setSaldo(saldoUsuario);
+        System.out.println("Muchas gracias por confiar en Bancos FSA. Estamos honrados de que nos hayas elegido como tu Banco");
+        System.out.println("---------------------------- BANCO INTERNACIONAL F.S.A. ----------------------------");
+    }
+    public static void verDatosCliente() {
+        System.out.println("------------------------ MIS DATOS ------------------------");
+            System.out.println("¡Bienvenido "+clientesBanco.getNombre()+"!");
+            System.out.println("El resumen de tus datos personales registrados en Bancos FSA: ");
+            System.out.println("Rut: "+clientesBanco.getRut());
+            System.out.println("Nombre completo: "+clientesBanco.getNombre());
+            System.out.println("Apellido Paterno: "+clientesBanco.getApellidoPaterno());
+            System.out.println("Apellido Materno: "+clientesBanco.getApellidoMaterno());
+            System.out.println("Domicilio: "+clientesBanco.getDomicilio());
+            System.out.println("Comuna: "+clientesBanco.getComuna());
+            System.out.println("Teléfono: "+clientesBanco.getTelefono());
+            System.out.println("Número de cuenta corriente: "+cuentasClientes.getNumeroCuenta());
+            System.out.println("Saldo: $ "+cuentasClientes.getSaldo());  
+    } 
+    public static void depositarDinero() {
+        teclado.nextLine();
+            System.out.println("----------------------------------- DEPOSITOS -----------------------------------");
+            System.out.println("Por favor, indica el monto a depositar. Ejemplo: 50000");
+            deposito = teclado.nextInt(); 
+            if (deposito > 0) {
+            saldoUsuario = saldoUsuario + deposito;
+            cuentasClientes.setSaldo(saldoUsuario);
+                System.out.println("¡Depósito realizado!");
+                System.out.println("Tu nuevo saldo es: $ "+cuentasClientes.getSaldo());
+            } else {
+                System.out.println("No se permite el ingreso de montos menores o iguales a 0. Por favor introduce un monto válido");
+            }
+    }
+    public static void retirarDinero() {
+        teclado.nextLine();
+            System.out.println("---------------------------------- RETIRAR DINERO ----------------------------------");
+            System.out.println("Por favor digita el monto que deseas retirar: ");
+            giroUsuario = teclado.nextInt();
+            if (giroUsuario <= 0) {
+                System.out.println("El monto a retirar debe ser mayor a 0");
+            } else if (giroUsuario > cuentasClientes.getSaldo()) {
+                System.out.println("El monto a retirar excede tu saldo actual");
+            } else {
+            nuevoSaldo = cuentasClientes.getSaldo();
+            nuevoSaldo = nuevoSaldo - giroUsuario;
+            cuentasClientes.setSaldo(nuevoSaldo);
+                System.out.println("¡Retiro exitoso! Tu nuevo saldo es: "+cuentasClientes.getSaldo());
+            }
+    }
+    public static void consultarSaldo() {
+        System.out.println("------------------------- CONSULTA SALDO -------------------------");
+        System.out.println("Tu saldo es: $ "+cuentasClientes.getSaldo()+" pesos");
+    }
+    
+    public static void main(String[] args) { 
+        
+        do {
+        
+        System.out.println("------------------------------ BIENVENIDOS A BANCO INTERNACIONAL F.S.A. ------------------------------ ");
+        System.out.println("Por favor, DIGITE una opción válida: ");
+        System.out.println("[1] Para REGISTRARSE como Nuevo Cliente de Bancos F.S.A.");
+        System.out.println("[2] Para ACCEDER a tu Sucursal Virtual. RUT Requerido");
+        System.out.println("[3] Para SALIR");
+        opcionUsuario = teclado.nextInt();
+        
+        if (opcionUsuario == 1) {
+        registrarCliente();
+        } else if (opcionUsuario == 2) {
+        teclado.nextLine();
+            System.out.println("Por favor, ingrese su RUT de Cliente. Recuerde que para acceder a Sucursal Virtual, usted debe ser Cliente.");
+            ingresoRut = teclado.nextLine();
+            
+            if (ingresoRut.equals(clientesBanco.getRut())) {
+           do { 
+            
+        System.out.println("-------------------------- BIENVENIDO A SUCURSAL VIRTUAL BANCO INTERNACIONAL F.S.A. --------------------------"); 
+        System.out.println("Por favor, DIGITE una opción válida: ");
+        System.out.println("[1] Para VER tus datos de cliente");
+        System.out.println("[2] Para DEPOSITAR dinero en tu cuenta");
+        System.out.println("[3] Para RETIRAR dinero de tu cuenta");
+        System.out.println("[4] Para CONSULTAR tu saldo");
+        System.out.println("[5] Para SALIR");
+        seleccionUsuario = teclado.nextInt();
+        
+        switch (seleccionUsuario) {
+        
+            case 1: verDatosCliente();
+            break;
+            case 2: depositarDinero();
+            break;
+            case 3: retirarDinero();
+            break;
+            case 4: consultarSaldo();
+            break;
+            default: System.out.println("Por favor digita una opción válida.");
+            return;
+                
+        }
+        
+    } while (seleccionUsuario != 5);  
+            
+        } else {
+            System.out.println("RUT no válido. Por favor, intente nuevamente");
+        } 
+        } else if (opcionUsuario != 3) {
+        System.out.println("Por favor ingrese una opción válida");
+                }
+        } while (opcionUsuario != 3);
+                System.out.println("Gracias por usar Banco Internacional F.S.A.");
+        
+                
+    teclado.close();
+    }
+}
