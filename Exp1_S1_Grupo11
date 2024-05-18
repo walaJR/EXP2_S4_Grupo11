@@ -178,17 +178,16 @@ public class BancoMain {
         
         switch (seleccionUsuario) {
         
-            case 1: verDatosCliente();
+            case 1: clientesBanco.verDatosCliente();
             break;
-            case 2: depositarDinero();
+            case 2: cuentasClientes.depositarDinero();
             break;
-            case 3: retirarDinero();
+            case 3: cuentasClientes.retirarDinero();
             break;
-            case 4: consultarSaldo();
+            case 4: cuentasClientes.consultarSaldo();
             break;
             default: System.out.println("Por favor digita una opción válida.");
-            return;
-                
+            return;             
         }
         
     } while (seleccionUsuario != 5);  
