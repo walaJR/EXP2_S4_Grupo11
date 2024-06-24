@@ -1,0 +1,15 @@
+Nombre usuario prestamo: Sebastian Olave, Codigo de prestamo: 151977
+
+Nombre del Libro solicitado: Violeta NO recomienda: Los Veterinarios
+
+========================================
+Nombre usuario prestamo: Sebastian Olave, Codigo de prestamo: 903547
+
+Nombre del Libro solicitado: Violeta NO recomienda: Los Veterinarios
+
+========================================
+Nombre usuario prestamo: Sebastian Alejandro, Codigo de prestamo: 103704
+
+Nombre del Libro solicitado: Violeta te amare por siempre
+
+========================================
