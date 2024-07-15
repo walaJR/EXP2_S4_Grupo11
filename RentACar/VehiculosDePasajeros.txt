@@ -1,0 +1,17 @@
+----= Vehículos de Pasajeros VIOLETA'S RENT A CAR =----
+
+Detalles del vehículo de pasajeros: Placa Patente: AA-1122Marca Vehículo: ToyotaModelo Vehículo: CamryTipo de Vehículo: Vehículo de PasajerosMás detalles: SedánEstado de Disponibilidad: Disponible
+
+Detalles del vehículo de pasajeros: Placa Patente: AB-2122Marca Vehículo: Mercedes-BenzModelo Vehículo: C200Tipo de Vehículo: Vehículo de PasajerosMás detalles: SedánEstado de Disponibilidad: No Disponible
+
+Detalles del vehículo de pasajeros: Placa Patente: AX-6554Marca Vehículo: Mercedes-BenzModelo Vehículo: A200Tipo de Vehículo: Vehículo de PasajerosMás detalles: HatchbackEstado de Disponibilidad: Disponible
+
+Detalles del vehículo de pasajeros: Placa Patente: KG-0223Marca Vehículo: LamborghiniModelo Vehículo: UrusTipo de Vehículo: Vehículo de PasajerosMás detalles: SUVEstado de Disponibilidad: Disponible
+
+Detalles del vehículo de pasajeros: Placa Patente: XC-6969Marca Vehículo: KiaModelo Vehículo: Sportage XLITipo de Vehículo: Vehículo de PasajerosMás detalles: SUVEstado de Disponibilidad: Disponible
+
+Detalles del vehículo de pasajeros: Placa Patente: QR-9633Marca Vehículo: Mercedes-BenzModelo Vehículo: GLETipo de Vehículo: Vehículo de PasajerosMás detalles: SUVEstado de Disponibilidad: Disponible
+
+Detalles del vehículo de pasajeros: Placa Patente: OP-5812Marca Vehículo: ToyotaModelo Vehículo: CorollaTipo de Vehículo: Vehículo de PasajerosMás detalles: SedánEstado de Disponibilidad: No Disponible
+
+Detalles del vehículo de pasajeros: Placa Patente: TY-5399Marca Vehículo: SmartModelo Vehículo: Smart ElectricTipo de Vehículo: Vehículo de PasajerosMás detalles: City CarEstado de Disponibilidad: No Disponible

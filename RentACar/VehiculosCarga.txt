@@ -1,0 +1,17 @@
+----= Vehículos de Carga VIOLETA'S RENT A CAR =----
+
+Detalles del vehículo de carga: Placa Patente: YF-2753Marca Vehículo: FordModelo Vehículo: Transit CustomTipo de Vehículo: Vehículo de CargaTipo de Carga: 2700 KG Doble EjeEstado de Disponibilidad: Disponible
+
+Detalles del vehículo de carga: Placa Patente: XA-1008Marca Vehículo: OpelModelo Vehículo: Movano Cargo VanTipo de Vehículo: Vehículo de CargaTipo de Carga: 2500 KG Doble EjeEstado de Disponibilidad: No Disponible
+
+Detalles del vehículo de carga: Placa Patente: BCKG-49Marca Vehículo: FordModelo Vehículo: Cargo 1846TTipo de Vehículo: Vehículo de CargaTipo de Carga: 2850 KG Triple EjeEstado de Disponibilidad: Disponible
+
+Detalles del vehículo de carga: Placa Patente: WB-2755Marca Vehículo: FordModelo Vehículo: Cargo 916Tipo de Vehículo: Vehículo de CargaTipo de Carga: 2000 KG Doble EjeEstado de Disponibilidad: Disponible
+
+Detalles del vehículo de carga: Placa Patente: WCKG-49Marca Vehículo: FordModelo Vehículo: Cargo 2831Tipo de Vehículo: Vehículo de CargaTipo de Carga: 2300 KG Triple EjeEstado de Disponibilidad: No Disponible
+
+Detalles del vehículo de carga: Placa Patente: XLOP-55Marca Vehículo: FordModelo Vehículo: Transit Cargo VanTipo de Vehículo: Vehículo de CargaTipo de Carga: 2100 KG Doble EjeEstado de Disponibilidad: Disponible
+
+Detalles del vehículo de carga: Placa Patente: HGLP-69Marca Vehículo: RAMModelo Vehículo: ProMaster CargoTipo de Vehículo: Vehículo de CargaTipo de Carga: 2300 KG Doble EjeEstado de Disponibilidad: Disponible
+
+Detalles del vehículo de carga: Placa Patente: EG-2000Marca Vehículo: DFSKModelo Vehículo: DFSK Cargo Van 1.5Tipo de Vehículo: Vehículo de CargaTipo de Carga: 1700 KG Doble EjeEstado de Disponibilidad: No Disponible
